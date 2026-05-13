@@ -1,0 +1,235 @@
+html,body {
+    min-height: 100%;
+    background: linear-gradient(#000000 0%, #434343 100%);
+    color: white;
+}
+
+body {
+    margin: 0;
+}
+
+.layout-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-navbar {
+    flex-shrink: 0;
+}
+
+.app-shell {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 72px);
+}
+
+.app-sidebar {
+    width: 260px;
+    flex: 0 0 260px;
+    position: sticky;
+    top: 72px;
+    height: calc(100vh - 72px);
+    overflow-y: auto;
+    padding: 20px 16px;
+}
+
+.app-sidebar-title {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.app-sidebar .nav-link {
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 10px 12px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.app-sidebar .nav-link:hover,
+.app-sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.app-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.page-container {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.login-container {
+    background: rgba(0, 0, 0, 0.329);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.cliente-container {
+    padding: 40px;
+    width: 100%;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.login-container h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 28px;
+}
+
+.login-container h2 {
+    color: #ffffffa4;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.form-label{
+    color: white !important;
+}
+
+.form-control {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #353535;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #0b0b0b 0%, #1f1f1f 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.35);
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: 1px solid #f5c6cb;
+}
+
+.clientes-lista {
+    background: rgba(0, 0, 0, 0.329);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    margin-top: 24px;
+    overflow-x: auto;
+    padding: 24px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.clientes-lista h2 {
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0;
+}
+
+.clientes-lista .badge {
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 8px 12px;
+}
+
+.clientes-lista .table-responsive {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    overflow: auto;
+}
+
+.clientes-lista .table {
+    --bs-table-bg: rgba(0, 0, 0, 0.18);
+    --bs-table-striped-bg: rgba(255, 255, 255, 0.04);
+    --bs-table-hover-bg: rgba(255, 255, 255, 0.08);
+    --bs-table-border-color: rgba(255, 255, 255, 0.14);
+}
+
+.clientes-lista .table th {
+    color: #ffffffa4;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.clientes-lista .table td {
+    color: #ffffff;
+}
+
+a{
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .auth-page {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    .login-container,
+    .clientes-lista {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .app-shell {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .app-sidebar {
+        width: 100%;
+        flex: 0 0 auto;
+        position: static;
+        height: auto;
+        padding: 14px 16px;
+    }
+
+    .app-sidebar-title {
+        margin-bottom: 10px;
+    }
+
+    .app-sidebar-nav {
+        flex-direction: row !important;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+    }
+
+    .app-sidebar .nav-link {
+        white-space: nowrap;
+    }
+}
