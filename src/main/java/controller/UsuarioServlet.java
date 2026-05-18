@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
- @WebServlet("usuario")
+@WebServlet("/usuario")
 public class UsuarioServlet extends HttpServlet {
 
     @Override

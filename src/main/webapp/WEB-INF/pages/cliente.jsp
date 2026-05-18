@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
     <title>Cadastro de cliente</title>
@@ -20,10 +21,23 @@
         <div class="app-shell">
             <%@ include file="/WEB-INF/includes/sidebar.jsp" %>
 
-            <main class="app-main p-4">
-                    <h1>CADASTRAR CLIENTE</h1>
-                        <h2>Informe os dados para cadastrar um novo cliente</h2>
+            <main class="app-main">
+                    <section class="page-heading">
+                        <div>
+                            <span class="page-kicker"><i class="bi bi-people"></i> Customers</span>
+                            <h1>Clientes</h1>
+                            <p>Cadastre e acompanhe clientes no mesmo visual do workspace.</p>
+                        </div>
+                    </section>
+
                     <div class="cliente-container">
+                        <div class="panel-header">
+                            <div>
+                                <h2>Novo cliente</h2>
+                                <p>Informe os dados principais para registrar um cliente.</p>
+                            </div>
+                        </div>
+
                         <form action="cliente" method="post">
                             <div class="row g-3">
                                 <div class="col-md-6">
@@ -63,7 +77,9 @@
                                 </div>
                             </div>
 
-                            <input type="submit" value="CADASTRAR" name="cadastrar" class="btn btn-login mt-4">
+                            <button type="submit" name="cadastrar" class="btn btn-primary mt-4">
+                                <i class="bi bi-check2 me-1"></i>Cadastrar
+                            </button>
                         </form>
 
                         <c:if test="${not empty erro}">
@@ -76,11 +92,11 @@
                     <section class="clientes-lista">
                         <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 mb-3">
                             <h2>Clientes cadastrados</h2>
-                            <span class="badge text-bg-light">${listaClientes.size()} cliente(s)</span>
+                            <span class="badge status-badge">${listaClientes.size()} cliente(s)</span>
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table table-dark table-striped table-hover align-middle mb-0">
+                            <table class="table task-table align-middle mb-0">
                                 <thead>
                                 <tr>
                                     <th>Nome</th>

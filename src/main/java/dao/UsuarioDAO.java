@@ -4,6 +4,7 @@ package dao;
 import model.Usuario;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -21,13 +22,19 @@ public class UsuarioDAO {
     }
 
     public Usuario autenticar(String email, String senha) throws SQLException{
+        String sql = "SELECT codigo, nome, email, ativo FROM usuario WHERE email = ? AND senha = ? AND ativo = TRUE";
 
-            String sql = "SELECT * FROM USUARIO " + "WHERE email = '"+email+"' " + "AND senha = '"+senha+"'";
-            System.out.println("sql - login: "+sql);
-            rs =  stmt.executeQuery(sql);
+        try (Connection conn = ConectaDBPostgres.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            while (rs.next())
-            {
+            ps.setString(1, email);
+            ps.setString(2, senha);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (!rs.next()) {
+                    return null;
+                }
+
                 Usuario usuario = new Usuario();
                 usuario.setCodigo(rs.getInt("codigo"));
                 usuario.setNome(rs.getString("nome"));
@@ -35,7 +42,7 @@ public class UsuarioDAO {
                 usuario.setAtivo(rs.getBoolean("ativo"));
                 return usuario;
             }
-        return null;
+        }
     }
 
     public boolean inserir(Usuario u) throws SQLException{

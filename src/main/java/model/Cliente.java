@@ -25,7 +25,7 @@ public class Cliente {
         this.cidade = cidade;
         this.email = email;
 
-    }in=
+    }
 
     public Cliente(int codigo,String nome,LocalDate dataNascimento,String telefone,String estado, String cidade, String email) {
         this.codigo = codigo;

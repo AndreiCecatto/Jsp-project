@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-@WebServlet("cliente")
+@WebServlet("/cliente")
 public class ClienteServlet extends HttpServlet {
 
     @Override
