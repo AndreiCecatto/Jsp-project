@@ -1,10 +1,5 @@
 -- StockHub - schema PostgreSQL.
 -- Execute este script no banco poow1 para recriar as tabelas usadas pelo projeto.
--- Atencao: os DROP TABLE apagam os dados existentes dessas tabelas.
-
-DROP TABLE IF EXISTS produto CASCADE;
-DROP TABLE IF EXISTS categoria CASCADE;
-DROP TABLE IF EXISTS usuario CASCADE;
 
 -- Usuario usado pelo login e controle de sessao.
 CREATE TABLE usuario (
