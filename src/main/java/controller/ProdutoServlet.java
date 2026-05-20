@@ -2,7 +2,6 @@ package controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,13 +10,11 @@ import model.Produto;
 import service.CategoriaService;
 import service.ProdutoService;
 import util.SessaoUtil;
-import util.UploadUtil;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 
 // Controller do CRUD de produtos. Recebe requisicoes e delega regras ao service.
-@MultipartConfig
 @WebServlet("/produtos")
 public class ProdutoServlet extends HttpServlet {
 
@@ -75,8 +72,6 @@ public class ProdutoServlet extends HttpServlet {
 
         try {
             Produto produto = montarProduto(req);
-            String novaImagem = UploadUtil.salvarImagem(req, "imagem", "produtos");
-            produto.setImagem(UploadUtil.manterImagemAtualSeNaoEnviarNova(novaImagem, req.getParameter("imagemAtual")));
 
             produtoService.salvar(produto);
             resp.sendRedirect(req.getContextPath() + "/produtos");

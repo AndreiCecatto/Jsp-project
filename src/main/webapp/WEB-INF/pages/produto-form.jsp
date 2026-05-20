@@ -3,7 +3,7 @@
 <%@page isELIgnored="false" %>
 <c:set var="activePage" value="produtos" />
 
-<%-- Formulario de produto. Controller recebe multipart e o Service valida os campos. --%>
+<%-- Formulario de produto. Controller recebe os dados e o Service valida os campos. --%>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -35,9 +35,8 @@
                 <div class="alert alert-danger">${erro}</div>
             </c:if>
 
-            <form class="record-form" method="post" action="${pageContext.request.contextPath}/produtos" enctype="multipart/form-data">
+            <form class="record-form" method="post" action="${pageContext.request.contextPath}/produtos">
                 <input type="hidden" name="id" value="${produto.id}">
-                <input type="hidden" name="imagemAtual" value="${produto.imagem}">
 
                 <div class="form-layout">
                     <section class="form-panel">
@@ -82,20 +81,6 @@
                             </div>
                         </div>
                     </section>
-
-                    <aside class="media-panel">
-                        <h2><i class="bi bi-image"></i> Imagem</h2>
-                        <c:choose>
-                            <c:when test="${not empty produto.imagem}">
-                                <img class="image-preview" src="${pageContext.request.contextPath}/${produto.imagem}" alt="${produto.nome}">
-                            </c:when>
-                            <c:otherwise>
-                                <div class="image-placeholder"><i class="bi bi-box-seam"></i></div>
-                            </c:otherwise>
-                        </c:choose>
-                        <label class="form-label" for="imagem">Arquivo</label>
-                        <input id="imagem" class="form-control" type="file" name="imagem" accept="image/*">
-                    </aside>
                 </div>
 
                 <div class="form-actions">

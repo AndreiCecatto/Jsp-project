@@ -2,7 +2,6 @@ package controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,12 +9,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Categoria;
 import service.CategoriaService;
 import util.SessaoUtil;
-import util.UploadUtil;
 
 import java.io.IOException;
 
 // Controller do CRUD de categorias do estoque.
-@MultipartConfig
 @WebServlet("/categorias")
 public class CategoriaServlet extends HttpServlet {
 
@@ -70,8 +67,6 @@ public class CategoriaServlet extends HttpServlet {
 
         try {
             Categoria categoria = montarCategoria(req);
-            String novaImagem = UploadUtil.salvarImagem(req, "imagem", "categorias");
-            categoria.setImagem(UploadUtil.manterImagemAtualSeNaoEnviarNova(novaImagem, req.getParameter("imagemAtual")));
 
             categoriaService.salvar(categoria);
             resp.sendRedirect(req.getContextPath() + "/categorias");

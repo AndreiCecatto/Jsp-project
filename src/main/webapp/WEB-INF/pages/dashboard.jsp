@@ -79,14 +79,7 @@
                             <div class="inventory-list">
                                 <c:forEach var="produto" items="${produtosRecentes}">
                                     <article class="inventory-row">
-                                        <c:choose>
-                                            <c:when test="${not empty produto.imagem}">
-                                                <img class="thumb" src="${pageContext.request.contextPath}/${produto.imagem}" alt="${produto.nome}">
-                                            </c:when>
-                                            <c:otherwise>
-                                                <span class="thumb-placeholder"><i class="bi bi-box-seam"></i></span>
-                                            </c:otherwise>
-                                        </c:choose>
+                                        <span class="thumb-placeholder"><i class="bi bi-box-seam"></i></span>
                                         <div>
                                             <span class="row-title">${produto.nome}</span>
                                             <span class="row-subtitle">${produto.categoriaNome}</span>

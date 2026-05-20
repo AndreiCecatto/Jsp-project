@@ -39,19 +39,10 @@
             <c:if test="${not empty erro}">
                 <div class="alert alert-danger">${erro}</div>
             </c:if>
-            public
+
             <section class="catalog-grid">
                 <c:forEach var="categoria" items="${categorias}">
                     <article class="category-card">
-                        <c:choose>
-                            <c:when test="${not empty categoria.imagem}">
-                                <img class="category-media" src="${pageContext.request.contextPath}/${categoria.imagem}" alt="${categoria.nome}">
-                            </c:when>
-                            <c:otherwise>
-                                <div class="image-placeholder"><i class="bi bi-tags"></i></div>
-                            </c:otherwise>
-                        </c:choose>
-
                         <div class="catalog-body">
                             <h3>${categoria.nome}</h3>
                             <p class="catalog-description">${categoria.descricao}</p>

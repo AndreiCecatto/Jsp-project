@@ -3,7 +3,7 @@
 <%@page isELIgnored="false" %>
 <c:set var="activePage" value="categorias" />
 
-<%-- Formulario de categoria. A imagem e opcional e o caminho e salvo pelo controller. --%>
+<%-- Formulario de categoria. --%>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -35,9 +35,8 @@
                 <div class="alert alert-danger">${erro}</div>
             </c:if>
 
-            <form class="record-form" method="post" action="${pageContext.request.contextPath}/categorias" enctype="multipart/form-data">
+            <form class="record-form" method="post" action="${pageContext.request.contextPath}/categorias">
                 <input type="hidden" name="id" value="${categoria.id}">
-                <input type="hidden" name="imagemAtual" value="${categoria.imagem}">
 
                 <div class="form-layout">
                     <section class="form-panel">
@@ -55,20 +54,6 @@
                             </div>
                         </div>
                     </section>
-
-                    <aside class="media-panel">
-                        <h2><i class="bi bi-image"></i> Imagem</h2>
-                        <c:choose>
-                            <c:when test="${not empty categoria.imagem}">
-                                <img class="image-preview" src="${pageContext.request.contextPath}/${categoria.imagem}" alt="${categoria.nome}">
-                            </c:when>
-                            <c:otherwise>
-                                <div class="image-placeholder"><i class="bi bi-tags"></i></div>
-                            </c:otherwise>
-                        </c:choose>
-                        <label class="form-label" for="imagem">Arquivo</label>
-                        <input id="imagem" class="form-control" type="file" name="imagem" accept="image/*">
-                    </aside>
                 </div>
 
                 <div class="form-actions">

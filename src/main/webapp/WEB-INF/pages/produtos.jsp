@@ -49,15 +49,6 @@
             <section class="catalog-grid">
                 <c:forEach var="produto" items="${produtos}">
                     <article class="product-card">
-                        <c:choose>
-                            <c:when test="${not empty produto.imagem}">
-                                <img class="product-media" src="${pageContext.request.contextPath}/${produto.imagem}" alt="${produto.nome}">
-                            </c:when>
-                            <c:otherwise>
-                                <div class="image-placeholder"><i class="bi bi-box-seam"></i></div>
-                            </c:otherwise>
-                        </c:choose>
-
                         <div class="catalog-body">
                             <h3>${produto.nome}</h3>
                             <span class="product-price">R$ ${produto.preco}</span>
