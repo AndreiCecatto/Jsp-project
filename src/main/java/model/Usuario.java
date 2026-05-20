@@ -1,5 +1,6 @@
 package model;
 
+// Model que representa o usuario do sistema usado no login e na sessao.
 public class Usuario {
 
     private int codigo;
@@ -33,6 +34,14 @@ public class Usuario {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public int getId() {
+        return codigo;
+    }
+
+    public void setId(int id) {
+        this.codigo = id;
     }
 
     public String getNome() {

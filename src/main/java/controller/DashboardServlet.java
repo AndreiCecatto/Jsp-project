@@ -7,7 +7,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Usuario;
-import service.TarefaService;
+import service.DashboardService;
+import service.ProdutoService;
 import util.SessaoUtil;
 
 import java.io.IOException;
@@ -19,7 +20,8 @@ import java.io.IOException;
 @WebServlet("/dashboard")
 public class DashboardServlet extends HttpServlet {
 
-    private final TarefaService tarefaService = new TarefaService();
+    private final DashboardService dashboardService = new DashboardService();
+    private final ProdutoService produtoService = new ProdutoService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,14 +33,15 @@ public class DashboardServlet extends HttpServlet {
 
         try {
             req.setAttribute("usuario", usuario);
-            req.setAttribute("resumo", tarefaService.buscarResumo(usuario.getCodigo()));
-            req.setAttribute("tarefasRecentes", tarefaService.listarRecentes(usuario.getCodigo()));
+            req.setAttribute("resumo", dashboardService.buscarResumo());
+            req.setAttribute("produtosRecentes", produtoService.listarRecentes());
+            req.setAttribute("produtosEstoqueBaixo", produtoService.listarEstoqueBaixo());
         } catch (Exception e) {
             e.printStackTrace();
             req.setAttribute("erro", "Nao foi possivel carregar o dashboard.");
         }
 
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/pages/dashbord.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/pages/dashboard.jsp");
         rd.forward(req, resp);
     }
 }

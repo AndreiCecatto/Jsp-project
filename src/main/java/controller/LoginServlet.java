@@ -14,7 +14,7 @@ import java.io.IOException;
 
 /*
  * Controller de login.
- * Autentica com o LoginService e guarda o usuario em sessao para proteger o TaskFlow.
+ * Autentica com o LoginService e guarda o usuario em sessao para proteger o StockHub.
  */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
